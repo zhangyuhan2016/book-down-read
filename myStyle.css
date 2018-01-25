@@ -1,0 +1,52 @@
+@charset "UTF-8";
+.look { font-size: 18px; line-height: 1.8rem; }
+
+.look .box { width: 400px; height: 300px; border: 2px dashed black; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 35px; }
+
+.look.white { background-color: #f6f1e7; color: #222222; }
+
+.look.green { background-color: #76f65d; color: #222222; }
+
+.look.yellow { background-color: #f6dd97; color: #222222; }
+
+.look.black { background-color: #4a513e; color: white; }
+
+.look .m-box { display: flex; flex-direction: row; align-items: center; justify-content: space-around; padding: 15px 0; }
+
+.look .m-box button { width: 88px; height: 30px; }
+
+.look .bg { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #a4a4a4; }
+
+.look .bg.white { background-color: white; }
+
+.look .bg.green { background-color: green; }
+
+.look .bg.yellow { background-color: yellow; }
+
+.look .bg.black { background-color: black; }
+
+.look .ac { border: 3px solid red; line-height: 44px; text-align: center; color: red; box-sizing: border-box; font-size: 25px; }
+
+.look .ac::after { content: "√"; }
+
+.look .setting-box { width: 380px; padding: 5px; box-sizing: border-box; position: fixed; top: 0; right: -320px; display: flex; flex-direction: row; transition: all 0.6s; }
+
+.look .setting-box.show { right: 0; }
+
+.look .setting-box .setting { flex: 1; background-color: #dddddd; max-width: 310px; }
+
+.look .setting-box .setting-sm { display: flex; flex-direction: column; align-items: center; height: 80px; justify-content: space-between; }
+
+.look .setting-box .setting-sm.show { margin-left: -300px; }
+
+.look .setting-box .setting-sm > div { height: 30px; background: #f0f0f0; line-height: 30px; width: 60px; text-align: center; margin-bottom: 10px; }
+
+.look .my-mm { font-weight: bold; font-size: 25px; }
+
+.look #book-list { position: fixed; top: 0; right: -310px; padding: 20px; box-sizing: border-box; background: #595a2d; color: #efefef; width: 310px; overflow-y: scroll; height: 100vh; overflow-x: hidden; transition: all 0.6s; }
+
+.look #book-list.show { right: 0; z-index: 999; }
+
+.look #book-list > div { height: 30px; cursor: pointer; }
+
+/*# sourceMappingURL=myStyle.css.map */

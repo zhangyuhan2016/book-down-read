@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "小说下载器",
+  "version": "1.0",
+  "description": "下载TxT小说",
+  "icons": {
+    "128": "images/book.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "images/book.png",
+      "38": "images/book.png"
+    },
+    "default_title": "小说下载器",
+    "default_popup": "index.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["*://www.biquguo.com/*","file://*/*.txt"],
+      "js": ["js/jquery.min.js","js/axios.min.js","js/options.js","js/test.js"],
+      "css": ["myStyle.css"]
+    }
+  ]
+}
