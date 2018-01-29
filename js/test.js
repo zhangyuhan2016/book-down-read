@@ -1,17 +1,16 @@
 /* 修正章节内容 删除多余脚本*/
-function getContent (data) {
+function getContent(data) {
   let tempStr = ''
   try {
     tempStr = /<div id="content" name="content">([\s\S]*)<\/div>/.exec(data)[1].replace(/<script[^>]*>([\s\S]*)<\/script>/ig, '')
-  }catch (err){
+  } catch (err) {
     tempStr = ''
   }
   return tempStr
 }
 
 /* 生成TxT */
-function downText () {
-  console.log('--down--')
+function downText() {
   /* 设置 */
   $('#top_tip').text('请等待我上面出现下载链接')
   getAllTxt()
@@ -19,19 +18,19 @@ function downText () {
 }
 
 /* 生成下载链接 */
-function creatLink () {
+function creatLink() {
   let text = $('#my_book_txt').text().replace(/[<br>|</br>|\?]/g, '\r\n').replace(/\s+/g, '\r\n\r\n').replace(/\^\^\^/ig, '  ')
   let name = $('#info h1').text()
   let type = 'text/plain'
   var a = document.getElementById('downBook')
-  var file = new Blob([text], {type: type})
+  var file = new Blob([text], { type: type })
   a.href = URL.createObjectURL(file)
   a.download = name
   $('#downBook').show()
 }
 
 /* Ajax获取所选的章节内容 */
-function getAllTxt () {
+function getAllTxt() {
   let arr = []
   let titleArr = []
   $('#my_list input:checked').each(function () {
@@ -52,32 +51,47 @@ function getAllTxt () {
       /* 生成下载链接 */
       creatLink()
     }).catch(err => {
-    alert('对不起,下载失败')
-    console.log('--err--', err)
-  })
+      alert('对不起,下载失败')
+      console.log('--err--', err)
+    })
 }
 
 /* 生成目录选择 */
-function createList () {
+function createList() {
   /* 获取目录 */
   let tempList = `<div id="cc_box">
         <button id="createBook">创建txt</button>
         <a style="display: none;" href="javascript:alert('创建失败')" id="downBook">点击下载电子书</a>
-    </div><div id="top_tip">将下载勾选的章节到txt中</div>`
+    </div><div id="top_tip">将下载勾选的章节到txt中</div><label for="checkInput">全选</label><input type="checkbox" checked id="checkInput">`
   $('#list a').each(function () {
     tempList += createOption(`<span data-url="${$(this).attr('href')}">${$(this).text()}</span>`)
   })
-  console.log(tempList)
   $('body').append(`<div id="my_list">${tempList}</div>`)
   addMyClass()
   $('#createBook').on('click', function () {
-    console.log('--ss--')
+    toggleStart(true)
     downText()
   })
+  $("#checkInput").on('click', function () {
+    let flag = $(this).prop('checked')
+    $(".my_book_box input").prop('checked', flag)
+  })
+}
+function toggleStart(flag) {
+  if (flag) {
+    $("#createBook").attr('style',`min-width: 100px;
+    font-size: 16px;
+    margin-bottom: 10px;height: 30px;cursor: no-drop;pointer-events: none;`)
+  } else {
+    $("#createBook").attr('style',`min-width: 100px;
+    font-size: 16px;
+    margin-bottom: 10px;height: 30px;`)
+  }
+  $("#createBook").prop('disabled', flag).text('如需重选章节,请刷新页面')
 }
 
 /* 添加章节 */
-function createOption (a) {
+function createOption(a) {
   let op = `<div class="my_book_box">
     ${a}
     <input type="checkbox" checked>
@@ -86,7 +100,7 @@ function createOption (a) {
 }
 
 /* 判断当前页面 */
-function checkPage () {
+function checkPage() {
   if (/\/(.*?)\//.exec(location.pathname)) {
     if (!location.pathname.includes('.html')) {
       /* 当前为目录页 */
@@ -97,7 +111,7 @@ function checkPage () {
 }
 
 /* 添加style */
-function addMyClass () {
+function addMyClass() {
   /* 添加目录样式 */
   $('#my_list').attr('style', `
     background: #181818;
@@ -134,23 +148,22 @@ function addMyClass () {
   $('#cc_box').attr('style', `display: flex;
     flex-direction: column;
     align-items: center;`)
-  $('#cc_box button').attr('style', `width: 100px;
+  $('#cc_box button').attr('style', `min-width: 100px;
     font-size: 16px;
     margin-bottom: 10px;height: 30px;`)
 }
 /* 创建axios */
-function createGet (url) {
+function createGet(url) {
   let api = location.href
   return axios.get(api + url)
 }
 /* txt阅读 */
-function lookTxt () {
+function lookTxt() {
   $("body").append(`<div>增大字号</div>`)
 }
 /* 主线任务 */
-function start () {
-  console.log('--location.href--', location.href)
-  if(location.protocol === 'file:'){
+function start() {
+  if (location.protocol === 'file:') {
     /* 打开txt */
     return showTxt()
   }

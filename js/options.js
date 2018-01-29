@@ -13,7 +13,7 @@ function addFont (boolean) {
   } else {
     font.size--
   }
-  $('body').attr('style', `font-size: ${font.size}px;`)
+  $('body').attr('style', `line-height: ${font.height}px;font-size: ${font.size}px;`)
   $('#font-size').text(font.size)
 }
 
@@ -23,7 +23,7 @@ function addHeight (boolean) {
   } else {
     font.height--
   }
-  $('body').attr('style', `line-height: ${font.height}px;`)
+  $('body').attr('style', `line-height: ${font.height}px;font-size: ${font.size}px;`)
   $('#font-height').text(font.height)
 }
 
@@ -50,11 +50,11 @@ function getTxtList () {
     goMark($(this).index())
   })
 }
-function goMark (i) {
-  /*滚动到第一个mark*/
-  var temp = document.querySelectorAll('.my-mm')[i]
-  document.querySelector('body').scrollTop = offset(temp).top
-}
+  function goMark (i) {
+    /*滚动到第一个mark*/
+    var temp = document.querySelectorAll('.my-mm')[i]
+    document.querySelector('body').scrollTop = offset(temp).top
+  }
 function offset(elem) {
   if(!elem) elem = this;
 
