@@ -77,6 +77,14 @@ function createList() {
     $(".my_book_box input").prop('checked', flag)
   })
 }
+/* 节选 */
+function checkSome(min,max){
+  $(".my_book_box input").each(function(i){
+    if(i <= max && i >= min){
+      $(".my_book_box input").eq(i).prop("checked",true)
+    }
+  })
+}
 function toggleStart(flag) {
   if (flag) {
     $("#createBook").attr('style',`min-width: 100px;

@@ -148,3 +148,15 @@ function showTxt(){
   getTxtList()
 }
 window.showTxt = showTxt
+/* 自动翻页可以采用 transform: translate3D();加上过渡效果会更平滑 */
+
+// i = 0
+// let t = setInterval(()=>{
+//   i += 6
+//   go("pre",i)
+// },60)
+// function go(selector,i){
+//   document.querySelector(selector).style.transition = "0.6s"
+//   document.querySelector(selector).style.transform = "translateY(-"+i+"px)"
+// }
+
