@@ -1,5 +1,15 @@
-## **使用需知**
-**仅在Chrome 62+使用,其他浏览器未经测试**
+<div align="center">
+  <img width="200" heigth="200" src="./images/book.png">
+  <h1>book-down-read</h1>
+  <div>
+    <img src="https://img.shields.io/github/release/zhangyuhan2016/book-down-read/all.svg"/>
+    <img src="https://img.shields.io/github/last-commit/zhangyuhan2016/book-down-read.svg"/>
+    <img src="https://img.shields.io/github/repo-size/zhangyuhan2016/book-down-read.svg"/>
+  </div>
+
+  <p>仅在<code>Chrome 62+</code>测试使用,其他浏览器未经测试</p>
+</div>
+## 使用需知
 
 - [ ]  打开[chrome扩展页面](chrome://extensions/),勾选开发者模式,拖入.ctx文件,如需阅读本地txt请允许本地网址权限.
 
