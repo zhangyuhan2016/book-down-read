@@ -5,10 +5,12 @@
     <a href="https://github.com/zhangyuhan2016/book-down-read/releases">
         <img src="https://img.shields.io/github/release/zhangyuhan2016/book-down-read/all.svg"/>
     </a>
-    <a href="./commits/master">
+    <a href="https://github.com/zhangyuhan2016/book-down-read/commits/master">
         <img src="https://img.shields.io/github/last-commit/zhangyuhan2016/book-down-read.svg"/>
     </a>
-    <img src="https://img.shields.io/github/repo-size/zhangyuhan2016/book-down-read.svg"/>
+    <a href="#>
+        <img src="https://img.shields.io/github/repo-size/zhangyuhan2016/book-down-read.svg"/>
+    </a>
   </div>
 
   <p>仅在<code>Chrome 62+</code>测试使用,其他浏览器未经测试</p>
