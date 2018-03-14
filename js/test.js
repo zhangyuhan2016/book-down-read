@@ -88,8 +88,6 @@ function createList() {
     $(".my_book_box input").prop('checked', flag)
   })
 }
-let arr = []
-arr.includes()
 /* 节选 */
 function checkSome(min,max){
   $(".my_book_box input").each(function(i){
