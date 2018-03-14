@@ -8,8 +8,11 @@
     <a href="https://github.com/zhangyuhan2016/book-down-read/commits/master">
         <img src="https://img.shields.io/github/last-commit/zhangyuhan2016/book-down-read.svg"/>
     </a>
-    <a href="#>
+    <a href="#">
         <img src="https://img.shields.io/github/repo-size/zhangyuhan2016/book-down-read.svg"/>
+    </a>
+    <a href="#">
+        <img src="https://img.shields.io/badge/chrome-62+-green.svg">
     </a>
   </div>
 
