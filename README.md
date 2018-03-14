@@ -22,11 +22,6 @@
 
 - [x]  (推荐)Clone or download,然后打开打开[chrome扩展页面](chrome://extensions/),勾选开发者模式,加载下载的文件夹.
 
-## 效果
-
-![下载选择](http://zhangyuhan2016.gitee.io/images/book_01.png)
-
-![本地阅读](./images/book.gif)
 
 ## 指南
 * 下载txt
@@ -36,11 +31,15 @@
     * 进入小说目录页
     * 在左侧勾选下载的章节
     * 等待下载完成,点击下载
+    
+![下载选择](./images/book.gif)
 
 * 本地txt阅读
 
     * 下载完成的txt拖入浏览器
     * 右上角进行阅读设置
+
+![本地阅读](./images/look_book.gif)    
 
 
 ## 备注
