@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="200" heigth="200" src="./images/book.png">
+  <img width="50" heigth="50" src="./images/book.png">
   <h1>book-down-read</h1>
   <div>
     <img src="https://img.shields.io/github/release/zhangyuhan2016/book-down-read/all.svg"/>
