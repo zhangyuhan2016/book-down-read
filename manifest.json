@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "小说下载器",
-  "version": "1.0",
-  "description": "下载TxT小说",
+  "version": "1.1",
+  "description": "下载TxT小说,阅读本地TxT",
   "icons": {
     "128": "images/book.png"
   },
