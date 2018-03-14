@@ -2,8 +2,11 @@
 function getContent(data) {
   let tempStr = ''
   try {
-    tempStr = /<div id="content" name="content">([\s\S]*)<\/div>/.exec(data)[1].replace(/<script[^>]*>([\s\S]*)<\/script>/ig, '')
-  } catch (err) {
+    let temp = /<div id="content"(.*?)>([\s\S]*)<\/div>/.exec(data)[0].split("</div>")[0] + '</div>'
+    let c = document.createElement('div')
+    c.innerHTML = temp
+    tempStr = c.innerText
+  } catch (err){
     tempStr = ''
   }
   return tempStr
@@ -64,7 +67,15 @@ function createList() {
         <a style="display: none;" href="javascript:alert('创建失败')" id="downBook">点击下载电子书</a>
     </div><div id="top_tip">将下载勾选的章节到txt中</div><label for="checkInput">全选</label><input type="checkbox" checked id="checkInput">`
   $('#list a').each(function () {
-    tempList += createOption(`<span data-url="${$(this).attr('href')}">${$(this).text()}</span>`)
+    let u = null
+    try {
+       u = String($(this).attr('href')).match(/\/\d+.html$/)[0].replace('/','') || $(this).attr('href')
+    }catch (err){
+      u = $(this).attr('href')
+    }
+    if(u){
+      tempList += createOption(`<span data-url="${u}">${$(this).text()}</span>`)
+    }
   })
   $('body').append(`<div id="my_list">${tempList}</div>`)
   addMyClass()
@@ -77,6 +88,8 @@ function createList() {
     $(".my_book_box input").prop('checked', flag)
   })
 }
+let arr = []
+arr.includes()
 /* 节选 */
 function checkSome(min,max){
   $(".my_book_box input").each(function(i){
@@ -175,6 +188,12 @@ function start() {
     /* 打开txt */
     return showTxt()
   }
+  /* 判断网址匹配规则 */
+  const BookWeb = ['www.biquguo.com','www.qu.la','www.biquge5200.com','www.biquge.co']
+  if(!BookWeb.includes(location.host)){
+    return console.warn('%c当前网址暂不支持小说下载','font-size: 3rem')
+  }
+  /* 判断目录页 */
   if (checkPage()) {
     /* 创建目录 */
     createList()

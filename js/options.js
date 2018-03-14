@@ -1,9 +1,30 @@
+/* 自动翻页可以采用 transform: translate3D();加上过渡效果会更平滑 */
+/* 自动翻页 */
+class AutoPage {
+  constructor ({selector = 'pre',i = 0,step = 6,s = 60} = {}){
+    this.selector = selector
+    this.i = i
+    this.step = step
+    this.s = s
+    this.t = null
+  }
+  start(){
+    document.querySelector(this.selector).style.transition = "0.6s"
+    this.t = setInterval(()=>{
+      this.i += this.step
+      document.querySelector(this.selector).style.transform = "translateY(-"+this.i+"px)"
+    },this.s)
+  }
+  close(){
+    clearInterval(this.t)
+  }
+}
 let font = {
   size: 17,
   height: 35,
   next: {
     flag: false,
-    tit: ''
+    tit: new AutoPage()
   }
 }
 
@@ -135,28 +156,14 @@ function showTxt(){
     if(font.next.flag){
       /* 停止 */
       $(this).text('自动翻页')
-      clearInterval(font.next.tit)
+      font.next.tit.close()
     }else {
       /* 开始 */
       $(this).text('停止翻页')
-      font.next.tit = setInterval(function(){
-        document.querySelector('body').scrollTop += 4
-      },50)
+      font.next.tit.start()
     }
     font.next.flag = !font.next.flag
   })
   getTxtList()
 }
 window.showTxt = showTxt
-/* 自动翻页可以采用 transform: translate3D();加上过渡效果会更平滑 */
-
-// i = 0
-// let t = setInterval(()=>{
-//   i += 6
-//   go("pre",i)
-// },60)
-// function go(selector,i){
-//   document.querySelector(selector).style.transition = "0.6s"
-//   document.querySelector(selector).style.transform = "translateY(-"+i+"px)"
-// }
-

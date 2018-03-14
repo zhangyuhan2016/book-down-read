@@ -10,13 +10,31 @@
         body{
             width: 300px;
         }
+        a{
+            font-size: 14px;
+            display: inline-block;
+            margin: 2px 0;
+        }
+        a::after{
+            content: attr(data-url);
+        }
+        .read{
+            font-size: 20px;
+        }
+        .read::after{
+            content: '';
+        }
     </style>
 </head>
 <body>
 <h2>在小说阅读网站的小说目录即可使用该扩展下载小说</h2>
-<h3>目前仅支持笔趣阁</h3>
-<a href="#" id="goLink">点击前往笔趣阁</a>
-<a href="#" id="goTxt">点击阅读txt</a>
+<h3>目前支持的网站</h3>
+<a href="#"  data-url="http://www.biquguo.com/">前往 (1) </a>
+<a href="#" data-url="http://www.qu.la">前往 (2) </a>
+<a href="#" data-url="http://www.biquge5200.com">前往 (3) </a>
+<a href="#" data-url="http://www.biquge.co">前往 (4) </a>
+<br><br><br><br>
+<a href="#" class="read" data-url="./options.html">点击阅读本地TxT</a>
 <h4>ps: 未做访问线程控制,存在失败的可能</h4>
 <script src="js/jquery.min.js"></script>
 <script src="js/index.js"></script>

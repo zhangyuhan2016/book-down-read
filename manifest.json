@@ -17,7 +17,7 @@
   "options_page": "options.html",
   "content_scripts": [
     {
-      "matches": ["*://www.biquguo.com/*","file://*/*.txt"],
+      "matches": ["*://*/*","file://*/*.txt"],
       "js": ["js/jquery.min.js","js/axios.min.js","js/options.js","js/test.js"],
       "css": ["myStyle.css"]
     }
