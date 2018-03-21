@@ -23,7 +23,7 @@
 
 - [ ]  打开[chrome扩展页面](chrome://extensions/),勾选开发者模式,拖入.ctx文件,如需阅读本地txt请允许本地网址权限.
 
-- [x]  (推荐)Clone or download,然后打开打开[chrome扩展页面](chrome://extensions/),勾选开发者模式,加载下载的文件夹.
+- [x]  <code>推荐</code> Clone or download,然后打开打开[chrome扩展页面](chrome://extensions/),勾选开发者模式,加载下载的文件夹.
 
 
 ## 指南
@@ -44,6 +44,11 @@
 
 ![本地阅读](./images/look_book.gif)    
 
+## 计划
+- [ ] UC等浏览器的小说阅读模式
+- [ ] 追书神器换源功能
+- [ ] 美化显示
+- [ ] vue版本
 ## 更新
 * 0.0.4 (2018/3/21)
     - 限制阅读模式目录字数
