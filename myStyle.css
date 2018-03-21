@@ -47,6 +47,6 @@
 
 .look #book-list.show { right: 0; z-index: 999; }
 
-.look #book-list > div { height: 30px; cursor: pointer; }
+.look #book-list > div { height: 30px; cursor: pointer; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 
 /*# sourceMappingURL=myStyle.css.map */
