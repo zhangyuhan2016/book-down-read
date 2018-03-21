@@ -1,24 +1,28 @@
 /* 自动翻页可以采用 transform: translate3D();加上过渡效果会更平滑 */
+
 /* 自动翻页 */
 class AutoPage {
-  constructor ({selector = 'pre',i = 0,step = 6,s = 60} = {}){
+  constructor ({selector = 'pre', i = 0, step = 6, s = 60} = {}) {
     this.selector = selector
     this.i = i
     this.step = step
     this.s = s
     this.t = null
   }
-  start(){
-    document.querySelector(this.selector).style.transition = "0.6s"
-    this.t = setInterval(()=>{
+
+  start () {
+    document.querySelector(this.selector).style.transition = '0.6s'
+    this.t = setInterval(() => {
       this.i += this.step
-      document.querySelector(this.selector).style.transform = "translateY(-"+this.i+"px)"
-    },this.s)
+      document.querySelector(this.selector).style.transform = 'translateY(-' + this.i + 'px)'
+    }, this.s)
   }
-  close(){
+
+  close () {
     clearInterval(this.t)
   }
 }
+
 let font = {
   size: 17,
   height: 35,
@@ -49,45 +53,49 @@ function addHeight (boolean) {
 }
 
 function toggleStyle (boolean) {
-  if(boolean){
+  if (boolean) {
     /* 设置 */
-    $("#sseeList").fadeToggle()
+    $('#sseeList').fadeToggle()
 
-  }else {
+  } else {
     /* 目录 */
-    $("#sseett").fadeToggle()
+    $('#sseett').fadeToggle()
     $('#book-list').toggleClass('show')
   }
   $('.setting-box').toggleClass('show')
 }
+
 function getTxtList () {
   /* 生成目录 */
   let tempList = $('pre').text().match(/(第(.+?)章(.+?)\n)/ig)
   tempList.forEach(function (i) {
     $('#book-list').append(`<div>${i}</div>`)
   })
-  $('pre').html($('pre').text().replace(/(第(.+?)章(.+?)\n)/ig,`<div class="my-mm">$1</div>`))
-  $("#book-list").on('click','div',function () {
+  $('pre').html($('pre').text().replace(/(第(.+?)章(.+?)\n)/ig, `<div class="my-mm">$1</div>`))
+  $('#book-list').on('click', 'div', function () {
     goMark($(this).index())
   })
 }
-  function goMark (i) {
-    /*滚动到第一个mark*/
-    var temp = document.querySelectorAll('.my-mm')[i]
-    document.querySelector('body').scrollTop = offset(temp).top
-  }
-function offset(elem) {
-  if(!elem) elem = this;
 
-  var x = elem.offsetLeft;
-  var y = elem.offsetTop;
+function goMark (i) {
+  /*滚动到第一个mark*/
+  var temp = document.querySelectorAll('.my-mm')[i]
+  document.querySelector('body').scrollTop = offset(temp).top
+}
+
+function offset (elem) {
+  if (!elem) elem = this
+
+  var x = elem.offsetLeft
+  var y = elem.offsetTop
 
   while (elem = elem.offsetParent) {
-    x += elem.offsetLeft;
-    y += elem.offsetTop;
+    x += elem.offsetLeft
+    y += elem.offsetTop
   }
-  return { left: x, top: y };
+  return {left: x, top: y}
 }
+
 function createTT () {
   $('body').append(`<div class="setting-box">
     <div class="setting-sm">
@@ -124,27 +132,27 @@ function createTT () {
 `)
 }
 
-function showTxt(){
-  $("body").addClass('look')
+function showTxt () {
+  $('body').addClass('look')
   createTT()
   addFont(true)
   addHeight(true)
-  $('.look #sseett').on('click',function () {
+  $('.look #sseett').on('click', function () {
     toggleStyle(true)
   })
-  $('.look #sseeList').on('click',function () {
+  $('.look #sseeList').on('click', function () {
     toggleStyle(false)
   })
-  $('.height button').eq(0).on('click',function () {
+  $('.height button').eq(0).on('click', function () {
     addHeight(false)
   })
-  $('.height button').eq(1).on('click',function () {
+  $('.height button').eq(1).on('click', function () {
     addHeight(true)
   })
-  $('.font button').eq(0).on('click',function () {
+  $('.font button').eq(0).on('click', function () {
     addFont(false)
   })
-  $('.font button').eq(1).on('click',function () {
+  $('.font button').eq(1).on('click', function () {
     addFont(true)
   })
   $('.bg').on('click', function () {
@@ -152,12 +160,12 @@ function showTxt(){
     $(this).addClass('ac')
     $('body').removeClass('white green black yellow').addClass($(this).attr('class').split(' ')[1])
   })
-  $("#autoPage").on('click',function () {
-    if(font.next.flag){
+  $('#autoPage').on('click', function () {
+    if (font.next.flag) {
       /* 停止 */
       $(this).text('自动翻页')
       font.next.tit.close()
-    }else {
+    } else {
       /* 开始 */
       $(this).text('停止翻页')
       font.next.tit.start()
@@ -166,4 +174,5 @@ function showTxt(){
   })
   getTxtList()
 }
+
 window.showTxt = showTxt
